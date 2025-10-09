@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.RajkotExplore" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#3B9EDB</item>
+        <item name="colorPrimaryVariant">#2E7DB3</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">#EC8B2C</item>
+        <item name="colorSecondaryVariant">#D67A1F</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+
+        <!-- Background colors -->
+        <item name="android:colorBackground">#F8F9FA</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnBackground">#212121</item>
+        <item name="colorOnSurface">#212121</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <!-- Enable edge-to-edge -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <!-- Material shape -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.RajkotExplore.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.RajkotExplore.MediumComponent</item>
+    </style>
+
+    <style name="Theme.RajkotExplore.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.RajkotExplore" parent="Base.Theme.RajkotExplore" />
+
+    <!-- Shape Appearances -->
+    <style name="ShapeAppearance.RajkotExplore.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.RajkotExplore.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- SearchView Style -->
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="submitBackground">@android:color/transparent</item>
+    </style>
+</resources>

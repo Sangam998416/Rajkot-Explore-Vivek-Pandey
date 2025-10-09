@@ -1,0 +1,37 @@
+package com.example.rajkotexplore.nearby
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.rajkotexplore.R
+
+class PicnicAdapter(private val places: List<PicnicPlace>) :
+    RecyclerView.Adapter<PicnicAdapter.PicnicViewHolder>() {
+
+    class PicnicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val placeImage: ImageView = itemView.findViewById(R.id.ivPlace)
+        val placeTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        val placeLocation: TextView = itemView.findViewById(R.id.tvLocation)
+        val placeDistance: TextView = itemView.findViewById(R.id.tvDistance)
+        val placeDescription: TextView = itemView.findViewById(R.id.tvDescription)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PicnicViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_picnic, parent, false)
+        return PicnicViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: PicnicViewHolder, position: Int) {
+        val place = places[position]
+        holder.placeImage.setImageResource(place.imagePicnic)
+        holder.placeTitle.text = place.title
+        holder.placeLocation.text = place.location
+        holder.placeDistance.text = place.distance
+        holder.placeDescription.text = place.description
+    }
+
+    override fun getItemCount(): Int = places.size
+}

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_event"
+        android:icon="@android:drawable/ic_menu_day"
+        android:title="Event"/>
+    <item android:id="@+id/nav_nearby"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:title="Nearby"/>
+    <item android:id="@+id/nav_transport"
+        android:icon="@android:drawable/ic_menu_directions"
+        android:title="Transport"/>
+    <item android:id="@+id/nav_more"
+        android:icon="@android:drawable/ic_menu_more"
+        android:title="More"/>
+</menu>

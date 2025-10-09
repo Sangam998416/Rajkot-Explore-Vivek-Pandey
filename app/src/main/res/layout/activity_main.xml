@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="16dp"
+        android:background="#E3F2FD"
+        tools:context=".MainActivity">
+
+        <!-- App Title Row -->
+        <LinearLayout
+            android:id="@+id/titleContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgSettings"
+            app:layout_constraintBottom_toTopOf="@+id/searchView"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/txtRajkot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rajkot"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#2196F3"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:id="@+id/txtExplore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Explore"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FF9800"
+                android:fontFamily="sans-serif-medium" />
+        </LinearLayout>
+
+        <!-- Settings Icon -->
+        <ImageView
+            android:id="@+id/imgSettings"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Settings"
+            android:src="@drawable/settings"
+            android:tint="#424242"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/searchView" />
+
+        <!-- Search Bar -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchCard"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="6dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="2dp"
+            app:layout_constraintTop_toBottomOf="@id/titleContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:queryHint="Search here..."
+                android:iconifiedByDefault="false" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="60dp">
+
+            <!-- Events Section -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEvents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+
+            <!-- Nearby Places Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nearby Places"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNearbyPlaces"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+
+            <!-- Parks Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Natural Spot"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+
+            <!-- Restaurants Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Restaurants"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRestaurants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+
+            <!-- Heritage Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heritage"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHaritage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+            <!-- University Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="University Cultural Events"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUniversity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/light_blue"/>
+</LinearLayout>
