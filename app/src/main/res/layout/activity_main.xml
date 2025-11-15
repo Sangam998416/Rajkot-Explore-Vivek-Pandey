@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="12dp"
@@ -25,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgSettings"
-            app:layout_constraintBottom_toTopOf="@+id/searchView"
+            app:layout_constraintBottom_toTopOf="@+id/searchCard"
             android:layout_marginStart="100dp"
             android:layout_marginTop="50dp"
             android:gravity="center_vertical">
@@ -64,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/searchView" />
+            app:layout_constraintBottom_toTopOf="@+id/searchCard" />
 
         <!-- Search Bar -->
         <androidx.cardview.widget.CardView
@@ -91,107 +89,87 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="#F9F9F9">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="60dp">
+            android:padding="12dp">
 
-            <!-- Events Section -->
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Events"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEvents"
+            <!-- 🔹 CATEGORY SECTION (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/categorySection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:orientation="vertical">
 
-            <!-- Nearby Places Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nearby Places"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp" />
+                <include layout="@layout/section_categories" />
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNearbyPlaces"
+            <!-- 🔹 EVENTS SECTION (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/eventsSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:orientation="vertical">
 
-            <!-- Parks Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Natural Spot"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp" />
+                <include layout="@layout/section_events" />
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNature"
+            <!-- 🔹 NEARBY PLACES (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/nearbySection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:orientation="vertical">
 
-            <!-- Restaurants Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Restaurants"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp" />
+                <include layout="@layout/section_nearby_places" />
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRestaurants"
+            <!-- 🔹 NATURE / PARKS (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/natureSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:orientation="vertical">
 
-            <!-- Heritage Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Heritage"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp" />
+                <include layout="@layout/section_nature" />
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHaritage"
+            <!-- 🔹 RESTAURANTS (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/restaurantsSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
-            <!-- University Section -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="University Cultural Events"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_margin="10dp" />
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvUniversity"
+                <include layout="@layout/section_restaurants" />
+            </LinearLayout>
+
+            <!-- 🔹 HERITAGE (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/heritageSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never" />
+                android:orientation="vertical">
+
+                <include layout="@layout/section_heritage" />
+            </LinearLayout>
+
+            <!-- 🔹 UNIVERSITY (Wrapped) -->
+            <LinearLayout
+                android:id="@+id/universitySection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/section_university" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

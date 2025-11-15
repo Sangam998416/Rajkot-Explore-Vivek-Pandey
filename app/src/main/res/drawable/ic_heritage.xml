@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Temple/Monument Base -->
+    <path
+        android:fillColor="#8D6E63"
+        android:pathData="M2,20h20v2H2z"/>
+
+    <!-- Steps -->
+    <path
+        android:fillColor="#A1887F"
+        android:pathData="M3,18h18v2H3z"/>
+
+    <!-- Pillars -->
+    <path
+        android:fillColor="#795548"
+        android:pathData="M5,10h2v8H5z"/>
+
+    <path
+        android:fillColor="#795548"
+        android:pathData="M11,10h2v8h-2z"/>
+
+    <path
+        android:fillColor="#795548"
+        android:pathData="M17,10h2v8h-2z"/>
+
+    <!-- Top Structure -->
+    <path
+        android:fillColor="#6D4C41"
+        android:pathData="M4,8h16v2H4z"/>
+
+    <!-- Roof/Dome -->
+    <path
+        android:fillColor="#D84315"
+        android:pathData="M12,2L4,8h16L12,2z"/>
+
+    <!-- Dome Accent -->
+    <path
+        android:fillColor="#FF5722"
+        android:pathData="M12,2l-4,3h8z"/>
+</vector>

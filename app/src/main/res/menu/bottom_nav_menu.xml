@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/nav_home"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="Home" />
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/home"
+        android:enabled="true" />
+
     <item
         android:id="@+id/nav_category"
-        android:icon="@android:drawable/ic_menu_today"
-        android:title="Category" />
-    <item android:id="@+id/nav_map" android:title="Map" android:icon="@android:drawable/ic_menu_mapmode"/>
-    <item android:id="@+id/nav_more" android:title="More" android:icon="@android:drawable/ic_menu_more"/>
+        android:icon="@drawable/ic_nav_category"
+        android:title="@string/category"
+        android:enabled="true" />
+
+    <item
+        android:id="@+id/nav_university"
+        android:icon="@drawable/ic_nav_university"
+        android:title="@string/university"
+        android:enabled="true" />
+
+    <item
+        android:id="@+id/nav_more"
+        android:icon="@drawable/ic_nav_more"
+        android:title="@string/more"
+        android:enabled="true" />
+
 </menu>

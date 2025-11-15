@@ -36,12 +36,12 @@
             android:name=".settings.LogoActivity"
             android:exported="true"
             android:theme="@style/Theme.RajkotExplore.NoActionBar" />
-        <activity android:name=".settings.AppInfoActivity" />
+        <activity android:name=".settings.settingActivity" />
         <!-- Profile -->
 
         <!-- _________________ Map Package _____________________-->
         <!-- _________________ Category Package _____________________-->
-        <activity android:name=".CategoryActivity" />
+        <activity android:name=".CategoryEventActivity" />
         <activity android:name=".event.EventActivity" />
         <activity android:name=".nearby.NearbyActivity" />
         <activity android:name=".nearby.TouristActivity" />
@@ -49,7 +49,31 @@
         <activity android:name=".nearby.ParkActivity" />
         <activity android:name=".nearby.PicnicActivity" />
         <activity android:name=".nearby.RestaurantActivity" />
-        <activity android:name=".nearby.UniversityActivity" />
+        <activity
+            android:name=".nearby.UniversityActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".CategoryDetailActivity" />
+        <activity android:name=".CategoryEventActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".PlaceDetailActivity" />
+        <activity android:name=".ViewAllActivity" />
+        <activity
+            android:name=".nearby.UniversityDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".nearby.UniversityActivity" />
+        <activity
+            android:name=".EventDetailActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:parentActivityName=".CategoryEventActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoryEventActivity" />
+        </activity>
+        <activity
+            android:name=".settings.PrivacyPolicyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <!-- _________________ More Package _____________________-->
         <activity android:name=".more.MoreActivity" />

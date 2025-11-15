@@ -5,26 +5,23 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.rajkotexplore.nearby.NearbyActivity
-import com.example.rajkotexplore.nearby.ParkActivity
-import com.example.rajkotexplore.nearby.RestaurantActivity
-import com.example.rajkotexplore.nearby.TouristActivity
 
 class CardAdapter(
     private val context: Context,
-    private val fullList: List<CardItem>,
+    private val items: List<CardItem>,
     private val category: String
-) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(), Filterable {
 
-    private var filteredList: MutableList<CardItem> = fullList.toMutableList()
+    private var filteredItems = items
 
-    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemImage: ImageView = itemView.findViewById(R.id.itemImage)
-        val itemTitle: TextView = itemView.findViewById(R.id.itemTitle)
+    class CardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imgCard: ImageView = view.findViewById(R.id.imgCard)
+        val txtTitle: TextView = view.findViewById(R.id.txtTitle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
@@ -34,50 +31,79 @@ class CardAdapter(
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        val item = filteredList[position]
-        holder.itemTitle.text = item.title
+        val item = filteredItems[position]
+        holder.imgCard.setImageResource(item.imageRes ?: 0)
+        holder.txtTitle.text = item.title
 
-        when {
-            item.imageRes != null -> {
-                holder.itemImage.visibility = View.VISIBLE
-                holder.itemImage.setImageResource(item.imageRes)
-            }
-            !item.imageUrl.isNullOrEmpty() -> {
-                holder.itemImage.visibility = View.VISIBLE
-                Glide.with(holder.itemView.context)
-                    .load(item.imageUrl)
-                    .into(holder.itemImage)
-            }
-            else -> {
-                holder.itemImage.visibility = View.GONE
-            }
-        }
-
-        // Handle click based on category
+        // Add click listener to open PlaceDetailActivity
         holder.itemView.setOnClickListener {
-            when (category) {
-                "events" -> context.startActivity(Intent(context, CategoryActivity::class.java))
-                "nearby" -> context.startActivity(Intent(context, NearbyActivity::class.java))
-                "nature" -> context.startActivity(Intent(context, ParkActivity::class.java))
-                "restaurants" -> context.startActivity(Intent(context, RestaurantActivity::class.java))
-                "heritage" -> context.startActivity(Intent(context, TouristActivity::class.java))
-                "university" -> context.startActivity(Intent(context, TouristActivity::class.java))
+            val intent = Intent(context, PlaceDetailActivity::class.java)
+            intent.putExtra("PLACE_IMAGE", item.imageRes)
+            intent.putExtra("PLACE_TITLE", item.title)
+            intent.putExtra("PLACE_CATEGORY", category)
+            intent.putExtra("PLACE_DESCRIPTION", item.description)
+            intent.putExtra("PLACE_LOCATION", item.location)
+            intent.putExtra("PLACE_TIMING", item.timing)
+            intent.putExtra("PLACE_LATITUDE", item.latitude)
+            intent.putExtra("PLACE_LONGITUDE", item.longitude)
+            context.startActivity(intent)
+        }
+    }
+
+    override fun getItemCount() = filteredItems.size
+
+    /**
+     * Enhanced filter function that searches across multiple fields
+     * Returns true if results found, false if no results
+     */
+    fun filter(query: String): Boolean {
+        val searchQuery = query.trim()
+
+        filteredItems = if (searchQuery.isEmpty()) {
+            items
+        } else {
+            items.filter { item ->
+                // Search in title
+                item.title.contains(searchQuery, ignoreCase = true) ||
+                        // Search in description
+                        item.description?.contains(searchQuery, ignoreCase = true) == true ||
+                        // Search in location
+                        item.location?.contains(searchQuery, ignoreCase = true) == true ||
+                        // Search in timing
+                        item.timing?.contains(searchQuery, ignoreCase = true) == true
+            }
+        }
+
+        notifyDataSetChanged()
+        return filteredItems.isNotEmpty()
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val query = constraint?.toString() ?: ""
+                filteredItems = if (query.isEmpty()) {
+                    items
+                } else {
+                    items.filter { item ->
+                        // Search across all fields
+                        item.title.contains(query, ignoreCase = true) ||
+                                item.description?.contains(query, ignoreCase = true) == true ||
+                                item.location?.contains(query, ignoreCase = true) == true ||
+                                item.timing?.contains(query, ignoreCase = true) == true
+                    }
+                }
+                return FilterResults().apply { values = filteredItems }
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                notifyDataSetChanged()
             }
         }
     }
 
-    override fun getItemCount(): Int = filteredList.size
-
-    // Filter function
-    fun filter(query: String) {
-        val lowerQuery = query.lowercase().trim()
-        filteredList = if (lowerQuery.isEmpty()) {
-            fullList.toMutableList()
-        } else {
-            fullList.filter {
-                it.title.lowercase().contains(lowerQuery)
-            }.toMutableList()
-        }
-        notifyDataSetChanged()
-    }
+    /**
+     * Get the count of currently filtered items
+     */
+    fun getFilteredCount(): Int = filteredItems.size
 }

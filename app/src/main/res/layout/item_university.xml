@@ -1,52 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<!-- Save as: res/layout/item_university.xml -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="6dp"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="12dp">
 
         <!-- University Image -->
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgUniversity"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_university_placeholder"
-            android:contentDescription="University Image"
-            android:background="@color/black" />
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Type Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipUniversityType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Private"
+            android:textSize="11sp"
+            android:textColor="@color/white"
+            app:chipMinHeight="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- University Name -->
         <TextView
             android:id="@+id/txtUniversityName"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="University Name"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:padding="10dp" />
+            app:layout_constraintEnd_toStartOf="@id/chipUniversityType"
+            app:layout_constraintStart_toEndOf="@id/imgUniversity"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- University Short Description -->
+        <!-- Rating Bar -->
+        <RatingBar
+            android:id="@+id/ratingUniversity"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:numStars="5"
+            android:rating="4.5"
+            android:stepSize="0.1"
+            app:layout_constraintStart_toEndOf="@id/imgUniversity"
+            app:layout_constraintTop_toBottomOf="@id/txtUniversityName" />
+
+        <!-- Established Year -->
+        <TextView
+            android:id="@+id/txtEstablished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="Est. 2016"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/imgUniversity"
+            app:layout_constraintTop_toBottomOf="@id/ratingUniversity" />
+
+        <!-- Admission Status -->
+        <TextView
+            android:id="@+id/txtAdmissionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="Admissions Open"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imgUniversity"
+            app:layout_constraintTop_toBottomOf="@id/txtEstablished" />
+
+        <!-- Description -->
         <TextView
             android:id="@+id/txtUniversityDesc"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="A short description about the university goes here."
-            android:textColor="@android:color/darker_gray"
-            android:textSize="15sp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="12dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
             android:maxLines="2"
-            android:ellipsize="end" />
+            android:text="Description"
+            android:textColor="#666666"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgUniversity" />
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

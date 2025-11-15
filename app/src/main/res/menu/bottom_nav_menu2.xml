@@ -7,7 +7,7 @@
         android:title="Nearby"/>
     <item android:id="@+id/nav_transport"
         android:icon="@android:drawable/ic_menu_directions"
-        android:title="Transport"/>
+        android:title="University"/>
     <item android:id="@+id/nav_more"
         android:icon="@android:drawable/ic_menu_more"
         android:title="More"/>
